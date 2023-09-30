@@ -27,30 +27,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Composable
-fun AppNavHost(
-    navController: NavHostController = rememberNavController(),
-    startDestination: String = "conversation"
-) {
-    NavHost(
-        modifier = Modifier,
-        navController = navController,
-        startDestination = startDestination
-    ) {
-        composable(route="conversation") {
-            Conversation(
-                onNavigateToConversationDetail = {
-                    navController.navigate(route="conversationDetail")
-                }
-            )
-        }
-        composable(route="conversationDetail") {
-            ConversationDetail(
-                onNavigateToConversation = {
-                    navController.navigate(route="conversation")
-                }
-            )
-        }
-    }
-}
